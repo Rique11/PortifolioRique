@@ -1,2 +1,0 @@
-# Capacitação-React
-# PortifolioRique
