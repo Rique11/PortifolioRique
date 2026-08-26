@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { BsArrowUpRight } from "react-icons/bs";
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { fadeIn } from "@/variants";
 
 export const Contact = () => {
@@ -28,6 +28,16 @@ export const Contact = () => {
             <a className="outline-button" href="https://www.linkedin.com/in/henrique-fajardo-59349328a/" target="_blank" rel="noreferrer">
               <FaLinkedin aria-hidden="true" />
               Falar no LinkedIn
+            </a>
+            <a
+              className="outline-button"
+              href="https://wa.me/5511989852882?text=Ol%C3%A1%2C%20Henrique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar."
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Conversar pelo WhatsApp no número (11) 98985-2882"
+            >
+              <FaWhatsapp aria-hidden="true" />
+              WhatsApp · (11) 98985-2882
             </a>
           </div>
         </motion.div>

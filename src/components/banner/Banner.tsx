@@ -1,5 +1,5 @@
 import Avatar from "@/assets/perfil.png";
-import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { BsArrowDownRight } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/variants";
@@ -38,8 +38,14 @@ export const Banner = () => {
                 Conheça minha trajetória
                 <BsArrowDownRight aria-hidden="true" />
               </a>
-              <a className="secondary-link" href="mailto:henriqueGau@therionej.com.br">
-                Entre em contato
+              <a
+                className="secondary-link gap-2"
+                href="https://wa.me/5511989852882?text=Ol%C3%A1%2C%20Henrique!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar."
+                target="_blank"
+                rel="noreferrer"
+              >
+                <FaWhatsapp aria-hidden="true" />
+                (11) 98985-2882
               </a>
             </div>
 
@@ -52,6 +58,9 @@ export const Banner = () => {
               </a>
               <a className="social-link" href="https://www.instagram.com/rique.cois/" target="_blank" rel="noreferrer" aria-label="Instagram de Henrique">
                 <FaInstagram aria-hidden="true" />
+              </a>
+              <a className="social-link" href="https://wa.me/5511989852882" target="_blank" rel="noreferrer" aria-label="WhatsApp de Henrique">
+                <FaWhatsapp aria-hidden="true" />
               </a>
             </div>
           </motion.div>
