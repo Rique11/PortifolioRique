@@ -1,6 +1,7 @@
-export type TypeService = {
-    name: string;
-    description: string;
-    link: string;
-    url: string;
-  };
+export type TherionRole = {
+  role: string;
+  eyebrow: string;
+  description: string;
+  highlights: string[];
+  current?: boolean;
+};

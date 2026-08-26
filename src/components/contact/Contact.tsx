@@ -1,124 +1,36 @@
 import { motion } from "framer-motion";
-import { useState, ChangeEvent, FormEvent } from "react";
-// Remova a importação de 'node-fetch' para usar o 'fetch' nativo do navegador
-
+import { BsArrowUpRight } from "react-icons/bs";
+import { FaLinkedin } from "react-icons/fa";
 import { fadeIn } from "@/variants";
 
-interface FormData {
-  nome: string;
-  email: string;
-  mensagem: string;
-}
-
 export const Contact = () => {
-  const [formData, setFormData] = useState<FormData>({
-    nome: "",
-    email: "",
-    mensagem: "",
-  });
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch("https://vivacious-sweatsuit-wasp.cyclic.app/api/form", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const responseData = await response.json(); // Leia a resposta como JSON
-
-      console.log(responseData);
-
-      if (response.ok) {
-        console.log("Formulário enviado com sucesso!");
-        // Lógica adicional após o envio bem-sucedido
-        // Popup de sucesso
-        window.alert("Formulário enviado com sucesso!");
-
-      } else {
-        console.error("Erro ao enviar o formulário");
-        // Lógica adicional para lidar com erros
-        window.alert("Erro ao enviar o formulário");
-      }
-    } catch (error) {
-      console.error("Erro inesperado:", error);
-      window.alert("Erro ao enviar o formulário");
-    }
-  };
-
   return (
-    <section className="section" id="contact">
+    <section className="section pb-32" id="contact" aria-labelledby="contact-title">
       <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row">
-          {/*text */}
-          <motion.div
-            variants={fadeIn("right", 0.3)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.5 }}
-            className="flex-1"
-          >
-            <div>
-              <h4 className="text-2xl uppercase text-accent font-medium">
-                Contato
-              </h4>
-              <h2 className="text-5xl lg:text-8xl uppercase mb-7">
-                Vamos conversar!
-              </h2>
-            </div>
-          </motion.div>
-          {/*form */}
-          <motion.form
-            onSubmit={handleSubmit}
-            variants={fadeIn("left", 0.3)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.5 }}
-            className="flex-1 flex flex-col gap-y-5 border rounded-2xl p-6 pb-14 items-start"
-          >
-            <input
-              onChange={handleChange}
-              value={formData.nome}
-              name="nome"
-              className="bg-transparent border-b py-2 text-white placeholder:text-white outline-none w-full"
-              type="name"
-              placeholder="seu nome"
-              required
-            />
-            <input
-              onChange={handleChange}
-              value={formData.email}
-              name="email"
-              className="bg-transparent border-b py-2 text-white placeholder:text-white outline-none w-full"
-              type="email"
-              placeholder="seu melhor email"
-              required
-            />
-            <textarea
-              onChange={handleChange}
-              value={formData.mensagem}
-              name="mensagem"
-              className="bg-transparent border-b py-10 text-white placeholder:text-white outline-none w-full resize-none mb-5"
-              placeholder="mensagem"
-              required
-            ></textarea>
-            <button type="submit" className="btn btn-sm">
-              enviar mensagem
-            </button>
-          </motion.form>
-        </div>
+        <motion.div
+          variants={fadeIn("up", 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="contact-card"
+        >
+          <div>
+            <span className="section-label">Vamos conversar</span>
+            <h2 id="contact-title" className="mt-4 max-w-3xl font-primary text-4xl font-semibold leading-tight text-white md:text-6xl">
+              Tem um desafio que combina tecnologia e gestão?
+            </h2>
+          </div>
+          <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a className="btn btn-lg inline-flex items-center justify-center gap-3" href="mailto:henriqueGau@therionej.com.br">
+              Enviar um e-mail
+              <BsArrowUpRight aria-hidden="true" />
+            </a>
+            <a className="outline-button" href="https://www.linkedin.com/in/henrique-fajardo-59349328a/" target="_blank" rel="noreferrer">
+              <FaLinkedin aria-hidden="true" />
+              Falar no LinkedIn
+            </a>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

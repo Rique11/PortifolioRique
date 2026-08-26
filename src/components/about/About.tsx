@@ -2,77 +2,59 @@ import { motion } from "framer-motion";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import { fadeIn } from "@/variants";
-import Rique from "@/assets/about.jpg"
+import Rique from "@/assets/about.png";
 
 export const About = () => {
-  const [ref, InView] = useInView({ threshold: 0.5 });
+  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
+
   return (
-    <section className="section" id="about" ref={ref}>
+    <section className="section" id="about" ref={ref} aria-labelledby="about-title">
       <div className="container mx-auto">
-        <div className="flex flex-col gap-y-10 md:flex-row md:items-center md:gap-y-0">
-          {/*image */}
+        <div className="grid items-center gap-10 md:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <motion.div
-            variants={fadeIn("right", 0.3)}
+            variants={fadeIn("right", 0.2)}
             initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.5 }}
-            className="flex-1 bg-about bg-contain bg-no-repeat h-[640px] mix-blend-lighten bg-top"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.35 }}
+            className="about-image-wrap"
           >
-
+            <img src={Rique} alt="Henrique Cois em um ambiente profissional" className="about-image" />
           </motion.div>
-          {/*text */}
+
           <motion.div
-            variants={fadeIn("left", 0.3)}
+            variants={fadeIn("left", 0.25)}
             initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.5 }}
-            className="flex-1"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.35 }}
           >
-            <h2 className="h2 text-accent">Sobre mim.</h2>
-            <h3 className="h3">sou desenvolvedor junior FullStack</h3>
-            <p>
-            Sou assessor de projetos na Therion, uma empresa júnior onde gerencio projetos de desenvolvimento web, impressão 3D, entre outros. 
-            Tenho experiência em modelagem/impressão 3D, desenvolvimento web com React e Python, e criação de sites responsivos em WordPress. 
-            Além disso, sou um entusiasta de tênis, tanto como jogador quanto como instrutor.
+            <span className="section-label">Sobre mim</span>
+            <h2 id="about-title" className="section-title mt-4">
+              Código, pessoas e <span className="text-gradient">resultado.</span>
+            </h2>
+            <p className="section-copy mt-5">
+              Minha formação técnica caminha junto com a experiência de liderar.
+              Na Therion EJ, evoluí da condução de projetos de desenvolvimento e
+              impressão 3D para a gestão da área de projetos e, hoje, para a
+              presidência da empresa.
             </p>
-            <div className="flex gap-x-6 lg:gap-x-10 mb-12 mt-5">
-              <div className="">
-                <div className="text-4xl text-gradient font-tertiary mb-2">
-                  {InView ? <CountUp start={0} end={5} duration={3} /> : null}
-                  +
-                </div>
-                <div className="text-sm tracking-[2px]">
-                  Projetos<br />
-                  Realizados
-                </div>
-              </div>
+            <p className="section-copy mt-4">
+              Gosto de construir soluções úteis, organizar operações e criar um
+              ambiente em que as pessoas consigam fazer o melhor trabalho delas.
+            </p>
 
-              <div className="">
-                <div className="text-4xl text-gradient font-tertiary mb-2">
-                  {InView ? <CountUp start={0} end={6} duration={3} /> : null}
-                  +
-                </div>
-                <div className="text-sm tracking-[2px]">
-                  Cursos <br />
-                  Completos
-                </div>
+            <div className="mt-8 grid grid-cols-3 gap-3">
+              <div className="metric-card">
+                <strong>{inView ? <CountUp start={0} end={3} duration={2} /> : 0}</strong>
+                <span>cargos na Therion</span>
               </div>
-
-              <div className="">
-                <div className="text-4xl text-gradient font-tertiary mb-2">
-                  {InView ? <CountUp start={0} end={3} duration={3} /> : null}
-                </div>
-                <div className="text-sm tracking-[2px]">
-                  Anos de <br />
-                  Experiencia
-                </div>
+              <div className="metric-card">
+                <strong>{inView ? <CountUp start={0} end={5} duration={2} /> : 0}+</strong>
+                <span>projetos realizados</span>
               </div>
-            </div>
-            <div className="flex items-center gap-x-5">
-              <button className="btn btn-lg"><a href="mailto:henriqueGau@therionej.com.br">Vamos conversar</a></button>
-              <a href="https://beacons.ai/pedroso?fbclid=PAAaZUZ7vjAEeBh3Txrks_YpJLI2zXpxXcSzBWOEpDENTVvZGGspQeYiJ95NU_aem_Af2Pz9zH9XiZ63aEmQ7hq7Voq7ThuBcZB5VpTt2gSPLID_Je-w2cSIjlxAdYFQI7cdo" target="_blank" className="text-gradient btn-link">
-                Meu Portifolio
-              </a>
+              <div className="metric-card">
+                <strong>1</strong>
+                <span>ERP desenvolvido</span>
+              </div>
             </div>
           </motion.div>
         </div>

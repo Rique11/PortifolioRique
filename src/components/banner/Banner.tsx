@@ -1,79 +1,78 @@
 import Avatar from "@/assets/perfil.png";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { TypeAnimation } from "react-type-animation";
+import { BsArrowDownRight } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/variants";
 
 export const Banner = () => {
   return (
-    <section className="section flex items-center" id="home">
-      <div className="container mx-auto">
-        <div className="flex flex-col gap-y-8 md:flex-row md:items-center md:gap-x-20 ">
-          <div className="flex-1 text-center font-secondary md:text-left">
-            <motion.div
-              variants={fadeIn("up", 0.3)}
-              whileInView={"show"}
-              initial="hidden"
-              viewport={{ once: false, amount: 0.7 }}
-            >
-              <h1 className="text-4xl font-bold lg:text-7xl">
-                Henrique<span> Cois</span>
-              </h1>
-              <div className="mb-6 text-4xl lg:text-6xl font-semibold uppercase">
-                <span className="ml-4 text-white">desenvolvedor</span>{" "}
-                <p>
-                  <TypeAnimation
-                    className="text-accent"
-                    sequence={["Html", 2000, "Css", 2000, "React", 2000, "PHP", 2000,"JavaScript", 2000]}
-                    speed={50}
-                    wrapper="span"
-                    repeat={Infinity}
-                  />
-                </p>
-              </div>
-            </motion.div>
-            <motion.p
-              variants={fadeIn("down", 0.3)}
-              whileInView={"show"}
-              initial="hidden"
-              viewport={{ once: false, amount: 0.7 }}
-            >
-              Atualmente estudante de Engenharia de Computação na Universidade Federal do Paraná, campus Apucarana.
-              Sou acessor de projetos da empresa junior Therion
-            </motion.p>
+    <section className="hero-section" id="home" aria-labelledby="hero-title">
+      <div className="hero-glow" aria-hidden="true" />
+      <div className="container relative z-10 mx-auto">
+        <div className="grid items-center gap-10 md:grid-cols-[1.15fr_0.85fr] lg:gap-20">
+          <motion.div
+            variants={fadeIn("up", 0.2)}
+            whileInView="show"
+            initial="hidden"
+            viewport={{ once: true, amount: 0.5 }}
+            className="text-center md:text-left"
+          >
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-fuchsia-400/25 bg-fuchsia-400/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.14em] text-fuchsia-200">
+              <span className="status-dot" aria-hidden="true" />
+              Presidente na Therion EJ
+            </div>
+            <h1 id="hero-title" className="hero-title">
+              Henrique <span className="text-gradient">Cois</span>
+            </h1>
+            <p className="mt-5 max-w-2xl text-xl font-medium leading-8 text-white/85 md:text-2xl">
+              Desenvolvedor full stack e líder de equipes que transforma desafios
+              em produtos, processos e resultados.
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/60 md:mx-0 md:text-lg">
+              Estudante de Engenharia de Computação na UFPR, com experiência em
+              desenvolvimento, gestão de projetos e liderança organizacional.
+            </p>
 
-            <motion.div
-              variants={fadeIn("up", 0.5)}
-              whileInView={"show"}
-              initial="hidden"
-              className="flex items-center gap-x-3 max-w-max mx-auto md:mx-0 mt-5 mb-5"
-            >
-              <button className="btn btn-lg"><a href="mailto:henriqueGau@therionej.com.br">Entre em contato</a></button>
-              <a className="text-gradient btn-link" href="https://beacons.ai/pedroso?fbclid=PAAaZUZ7vjAEeBh3Txrks_YpJLI2zXpxXcSzBWOEpDENTVvZGGspQeYiJ95NU_aem_Af2Pz9zH9XiZ63aEmQ7hq7Voq7ThuBcZB5VpTt2gSPLID_Je-w2cSIjlxAdYFQI7cdo" target="_blank">
-                Meu portifolio
+            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center md:justify-start">
+              <a className="btn btn-lg inline-flex items-center gap-3" href="#services">
+                Conheça minha trajetória
+                <BsArrowDownRight aria-hidden="true" />
               </a>
-            </motion.div>
-            <div className="flex gap-x-2 max-w-max mx-auto md:mx-0">
-              <a href="https://github.com/Rique11" target="_blank">
-                <FaGithub />
-              </a>
-              <a href="https://www.linkedin.com/in/henrique-fajardo-59349328a/" target="_blank">
-                <FaLinkedin />
-              </a>
-              <a href="https://www.instagram.com/rique.cois/" target="_blank">
-                <FaInstagram />
+              <a className="secondary-link" href="mailto:henriqueGau@therionej.com.br">
+                Entre em contato
               </a>
             </div>
-          </div>
-          {/* IMAGE */}
+
+            <div className="mt-8 flex justify-center gap-3 md:justify-start" aria-label="Redes sociais">
+              <a className="social-link" href="https://github.com/Rique11" target="_blank" rel="noreferrer" aria-label="GitHub de Henrique">
+                <FaGithub aria-hidden="true" />
+              </a>
+              <a className="social-link" href="https://www.linkedin.com/in/henrique-fajardo-59349328a/" target="_blank" rel="noreferrer" aria-label="LinkedIn de Henrique">
+                <FaLinkedin aria-hidden="true" />
+              </a>
+              <a className="social-link" href="https://www.instagram.com/rique.cois/" target="_blank" rel="noreferrer" aria-label="Instagram de Henrique">
+                <FaInstagram aria-hidden="true" />
+              </a>
+            </div>
+          </motion.div>
+
           <motion.div
-            variants={fadeIn("up", 0.4)}
-            whileInView={"show"}
+            variants={fadeIn("left", 0.35)}
+            whileInView="show"
             initial="hidden"
-            viewport={{ once: false, amount: 0.7 }}
-            className="hidden md:flex flex-1"
+            viewport={{ once: true, amount: 0.5 }}
+            className="hero-portrait-wrap mx-auto"
           >
-            <img src={Avatar} alt="" />
+            <div className="hero-orbit" aria-hidden="true" />
+            <img className="hero-portrait" src={Avatar} alt="Henrique Cois" />
+            <div className="hero-metric hero-metric-top">
+              <strong>3</strong>
+              <span>posições de liderança</span>
+            </div>
+            <div className="hero-metric hero-metric-bottom">
+              <strong>ERP</strong>
+              <span>case de produto</span>
+            </div>
           </motion.div>
         </div>
       </div>

@@ -1,65 +1,92 @@
 import { motion } from "framer-motion";
-import { BsArrowRight } from "react-icons/bs";
+import { BsArrowUpRight, BsCheck2 } from "react-icons/bs";
 import { fadeIn } from "@/variants";
-import { services } from "./data";
+import { therionRoles } from "./data";
 
 export const Services = () => {
   return (
-    <section className="section" id="services">
+    <section className="section relative" id="services" aria-labelledby="therion-title">
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row">
-          {/* text and image*/}
-          <motion.div
-            variants={fadeIn("right", 0.3)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.5 }}
-            className="flex-1 md:bg-services bg-no-repeat bg-bottom mix-blend-lighten"
-          >
-            <h2 className="h2 text-accent">O que faço.</h2>
-            <h3 className="h3">Entusiasta em programar e aprender</h3>
-            <button className="btn btn-sm">
-              <a href="https://beacons.ai/pedroso?fbclid=PAAaZUZ7vjAEeBh3Txrks_YpJLI2zXpxXcSzBWOEpDENTVvZGGspQeYiJ95NU_aem_Af2Pz9zH9XiZ63aEmQ7hq7Voq7ThuBcZB5VpTt2gSPLID_Je-w2cSIjlxAdYFQI7cdo" target="_blank">
-                Entenda um pouco
-              </a>
-            </button>
-          </motion.div>
+        <motion.div
+          variants={fadeIn("up", 0.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mb-10 max-w-3xl"
+        >
+          <span className="section-label">Trajetória na Therion EJ</span>
+          <h2 id="therion-title" className="section-title mt-4">
+            De projetos à <span className="text-gradient">presidência.</span>
+          </h2>
+          <p className="section-copy mt-5">
+            Uma jornada de crescimento baseada em assumir responsabilidades cada
+            vez maiores, formar pessoas e transformar estratégia em resultado.
+          </p>
+        </motion.div>
 
-          {/* services */}
-          <div className="flex flex-col flex-1 py-4">
-            <motion.div
-              variants={fadeIn("left", 0.3)}
+        <div className="relative grid gap-5 lg:grid-cols-3">
+          <div className="timeline-line hidden lg:block" aria-hidden="true" />
+          {therionRoles.map((item, index) => (
+            <motion.article
+              key={item.role}
+              variants={fadeIn("up", 0.2 + index * 0.12)}
               initial="hidden"
-              whileInView={"show"}
-              viewport={{ once: false, amount: 0.5 }}
+              whileInView="show"
+              viewport={{ once: true, amount: 0.25 }}
+              className={`role-card ${item.current ? "role-card-current" : ""}`}
             >
-              {services.map((list, index) => {
-                const { name, description, url, link } = list; // Adicione a propriedade 'url' aqui
-                return (
-                  <div
-                    key={index}
-                    className="border-2 border-white/20 border-solid rounded-2xl p-2 mb-2 shadow-yellow-100 shadow-md hover:scale-105 transition duration-700 ease-out"
-                  >
-                    <div className="leading-normal">
-                      <h4 className="text-2xl font-semibold font-primary leading-loose">
-                        {name}
-                      </h4>
-                      <p className="font-secondary">{description}</p>
-                    </div>
-                    <div className="">
-                      <a href={url} target="_blank" className="flex items-center gap-x-2"> {/* Use a propriedade 'url' aqui */}
-                        <span className="text-gradient">{link}</span>
-                        <i className="btn p-1 items-center flex">
-                          <BsArrowRight />
-                        </i>
-                      </a>
-                    </div>
-                  </div>
-                );
-              })}
-            </motion.div>
-          </div>
+              <div className="mb-7 flex items-center justify-between">
+                <span className="role-number">0{index + 1}</span>
+                {item.current && <span className="current-badge">Atualmente</span>}
+              </div>
+              <p className="mb-2 text-sm font-semibold uppercase tracking-[0.16em] text-fuchsia-300">
+                {item.eyebrow}
+              </p>
+              <h3 className="mb-4 font-primary text-2xl font-semibold text-white">
+                {item.role}
+              </h3>
+              <p className="mb-6 text-base leading-7 text-white/70">{item.description}</p>
+              <ul className="space-y-3 text-base text-white/85">
+                {item.highlights.map((highlight) => (
+                  <li key={highlight} className="flex gap-3">
+                    <BsCheck2 className="mt-1 shrink-0 text-xl text-fuchsia-400" aria-hidden="true" />
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
+          ))}
         </div>
+
+        <motion.article
+          variants={fadeIn("up", 0.25)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.25 }}
+          className="case-card mt-6"
+        >
+          <div className="case-grid">
+            <div>
+              <span className="section-label">Case em destaque</span>
+              <h3 className="mt-5 max-w-2xl font-primary text-3xl font-semibold leading-tight text-white md:text-4xl">
+                ERP para transformar a gestão da empresa júnior
+              </h3>
+            </div>
+            <div>
+              <p className="text-lg leading-8 text-white/75">
+                Idealizei e desenvolvi um ERP para centralizar e simplificar a gestão
+                da Therion. A solução despertou o interesse de outras empresas juniores
+                e de órgãos da faculdade, que solicitaram acesso para também utilizá-la.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3" aria-label="Competências aplicadas no ERP">
+                {["Produto", "Desenvolvimento", "Gestão", "Escalabilidade"].map((skill) => (
+                  <span className="skill-pill" key={skill}>{skill}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+          <BsArrowUpRight className="case-arrow" aria-hidden="true" />
+        </motion.article>
       </div>
     </section>
   );

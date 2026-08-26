@@ -1,25 +1,17 @@
+import { BsArrowUpRight } from "react-icons/bs";
 import { ImgsWorkType } from "./type";
 
-export const Workimg = ({ img, title, nameProjeto, url }: ImgsWorkType) => {
-  const handleClick = () => {
-    // Lógica adicional que você pode adicionar ao manipular o clique, se necessário
-    console.log('Imagem clicada!'); 
-  };
-
-  return (
-    <a href={url} target="_blank" rel="noopener noreferrer" onClick={handleClick}>
-      <div className="flex group relative overflow-hidden border-2 border-white/50 rounded-xl">
-        <div className="group-hover:bg-black/70 w-full h-full z-40 transition-all duration-300 absolute"></div>
-        <img
-          className="group-hover:scale-125 transition-all duration-500"
-          src={img}
-          alt=""
-        />
-        <div className="absolute -bottom-full left-12 group-hover:bottom-24 transition-all duration-500 z-50">
-          <h4 className="text-gradient">{title}</h4>
-          <h5 className="text-white text-2xl">{nameProjeto}</h5>
-        </div>
+export const Workimg = ({ img, title, nameProjeto, url }: ImgsWorkType) => (
+  <a className="project-card group" href={url} target="_blank" rel="noopener noreferrer">
+    <div className="project-image-wrap">
+      <img className="project-image" src={img} alt={`Prévia do projeto ${nameProjeto}`} />
+    </div>
+    <div className="flex items-start justify-between gap-4 p-5">
+      <div>
+        <p className="mb-2 text-xs font-semibold uppercase tracking-[0.16em] text-fuchsia-300">{title}</p>
+        <h3 className="font-primary text-lg font-semibold leading-snug text-white">{nameProjeto}</h3>
       </div>
-    </a>
-  );
-};
+      <BsArrowUpRight className="mt-1 shrink-0 text-xl text-white/50 transition group-hover:text-fuchsia-300" aria-hidden="true" />
+    </div>
+  </a>
+);

@@ -1,85 +1,17 @@
-import { BiHomeAlt, BiUser } from "react-icons/bi";
-import { BsClipboardData, BsBriefcase, BsChatSquare } from "react-icons/bs";
-import { Link } from "react-scroll";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-type Props = {};
-
-export const Footer = (props: Props) => {
-  const styleLink = "cursor-pointer flex items-center gap-x-2";
-
-  return (
-    <footer className="shadow-lg py-16 w-full mt-16" id="footer">
-      <div className="container mx-auto">
-        <div className="flex lg:flex-row mb-10 justify-between">
-          <div className="flex">
-            <a href="" className="text-gradient">
-              Henrique <br />
-              <span className="text-white">Cois</span>
-            </a>
-          </div>
-          <div className="flex flex-col lg:basis-1/2">
-            <h3 className="h3">FullStack Developer</h3>
-          </div>
-          <div className="flex-col flex">
-            <Link
-              to="home"
-              className={styleLink}
-              activeClass="border-b text-accent"
-              smooth={true}
-              spy={true}
-              offset={-200}
-            >
-              <BiHomeAlt />
-              <span>Home</span>
-            </Link>
-            <Link
-              to="about"
-              className={styleLink}
-              activeClass="border-b text-accent"
-              smooth={true}
-              spy={true}
-              offset={-200}
-            >
-              <BiUser />
-              <span>Sobre</span>
-            </Link>
-
-            <Link
-              to="services"
-              className={styleLink}
-              activeClass="border-b text-accent"
-              smooth={true}
-              spy={true}
-              offset={-200}
-            >
-              <BsClipboardData />
-              <span>Seviço</span>
-            </Link>
-
-            <Link
-              to="work"
-              className={styleLink}
-              activeClass="border-b text-accent"
-              smooth={true}
-              spy={true}
-              offset={-200}
-            >
-              <BsBriefcase />
-              <span>Trabalho</span>
-            </Link>
-            <Link
-              to="contact"
-              className={styleLink}
-              activeClass="border-b text-accent"
-              smooth={true}
-              spy={true}
-              offset={-200}
-            >
-              <BsChatSquare /> <span>Contato</span>
-            </Link>
-          </div>
-        </div>
+export const Footer = () => (
+  <footer className="border-t border-white/10 py-10">
+    <div className="container mx-auto flex flex-col items-center justify-between gap-5 pb-24 text-center text-sm text-white/50 md:flex-row md:pb-0 md:text-left">
+      <p>© {new Date().getFullYear()} Henrique Cois. Tecnologia com propósito.</p>
+      <div className="flex gap-5">
+        <a className="footer-link" href="https://github.com/Rique11" target="_blank" rel="noreferrer">
+          <FaGithub aria-hidden="true" /> GitHub
+        </a>
+        <a className="footer-link" href="https://www.linkedin.com/in/henrique-fajardo-59349328a/" target="_blank" rel="noreferrer">
+          <FaLinkedin aria-hidden="true" /> LinkedIn
+        </a>
       </div>
-    </footer>
-  );
-};
+    </div>
+  </footer>
+);
