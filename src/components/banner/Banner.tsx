@@ -29,7 +29,7 @@ export const Banner = () => {
               em produtos, processos e resultados.
             </p>
             <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/60 md:mx-0 md:text-lg">
-              Estudante de Engenharia de Computação na UFPR, com experiência em
+              Estudante de Engenharia de Computação na UTFPR, com experiência em
               desenvolvimento, gestão de projetos e liderança organizacional.
             </p>
 
